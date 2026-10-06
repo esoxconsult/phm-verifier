@@ -1,0 +1,15 @@
+{
+  "comment": "Oeffentliche Schluesselhistorie der WERK-Schluessel (Zweck 'werk', key_id-Raum 'wk-'). Mit diesem Paar werden ausschliesslich EIGENE veroeffentlichte Texte versiegelt, allen voran die Fassungen des Kriterienwerks. Es ist ausdruecklich NICHT der Schluessel fuer Kundenakten (Raum 'ba-', seal_key_history.json) und darf es nie werden; ein Werk-Siegel an einer Kundenakte faellt schon an der Kennung auf, nicht erst an der Signatur. Nur OEFFENTLICHE Ed25519-Schluessel; der geheime Teil steht nie hier. Jeder Eintrag: key_id ('wk-' plus die ersten 16 Hex-Zeichen von SHA-256 ueber die Bytes des oeffentlichen Schluessels), zweck, art, sig_algo, public_key (Hex, 32 Byte), valid_from/valid_to (UTC, Format YYYY-MM-DDThh:mm:ssZ; valid_to null = laeuft noch), note. Rotation: ein neues Paar bekommt eine neue key_id und einen neuen Eintrag; der abgeloeste Eintrag bleibt stehen und erhaelt ein valid_to, das Fenster des neuen schliesst daran an. Je Schluesselraum laeuft hoechstens ein Eintrag (valid_to null). Ein Pruefer waehlt den Schluessel ueber die key_id im Siegel und bezieht ihn aus DIESER Datei, nicht aus dem Paket. ART DES SCHLUESSELS: jeder Eintrag traegt das maschinenlesbare Feld 'art'. Zulaessig sind 'demo' (eine Signatur damit beweist keine Urheberschaft durch einen getrennt verwahrten Schluessel: der geheime Teil ist offengelegt oder seine Verwahrung ist noch nicht gesichert; sie belegt nur Unveraendertheit und, mit Zeitstempel, den Zeitpunkt), 'ephemer' (einmalig verwendet, geheimer Teil nie gespeichert, valid_to = valid_from) und 'produktiv' (geheimer Teil unter Verwahrung, nicht im Repository). Ein Werkzeug waehlt den Schluessel ueber die key_id, nie ueber die Reihenfolge der Liste (am 03.08.2026 hat eine Auswahl nach dem LETZTEN Eintrag gegen den falschen Schluessel geprueft); 'art' sagt ihm, was es in der Hand haelt, und gehoert in jedes Urteil, das ueber ein damit gesiegeltes Objekt faellt.",
+  "keys": [
+    {
+      "key_id": "wk-cf838e4c808c6aa0",
+      "zweck": "werk",
+      "art": "demo",
+      "sig_algo": "ed25519",
+      "public_key": "bf6a3873e5486b0514ae677a4080c336f31b8d63718217b10f14a61edace1a37",
+      "valid_from": "2026-07-31T20:03:54Z",
+      "valid_to": null,
+      "note": "Werk-Schluessel, erzeugt am 31.07.2026 fuer die Verankerung des Kriterienwerks (ab Fassung v0.3). art demo, weil die getrennte Verwahrung offen ist (Frist 31.12.2026, #287), nicht weil der geheime Teil veroeffentlicht waere: er liegt nicht im Repository, sondern auf einem einzelnen Rechner, eine Zweitkopie gibt es noch nicht. Eine Signatur damit beweist deshalb keine Urheberschaft durch einen getrennt verwahrten Schluessel. Geht der geheime Teil verloren, bleiben die bestehenden Siegel pruefbar; neue Fassungen koennen mit dieser key_id dann nicht mehr gesiegelt werden."
+    }
+  ]
+}

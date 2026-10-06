@@ -1,0 +1,25 @@
+{
+  "comment": "Oeffentliche Schluesselhistorie der BELEGAKTEN-Siegel-Schluessel (Zweck 'belegakte', key_id-Raum 'ba-'). Nur OEFFENTLICHE Ed25519-Schluessel; der geheime Teil steht nie hier. Jeder Eintrag: key_id ('ba-' plus die ersten 16 Hex-Zeichen von SHA-256 ueber die Bytes des oeffentlichen Schluessels), zweck, art, sig_algo, public_key (Hex, 32 Byte), valid_from/valid_to (UTC, Format YYYY-MM-DDThh:mm:ssZ; valid_to null = laeuft noch), note. Rotation: ein neues Paar bekommt eine neue key_id und einen neuen Eintrag; der abgeloeste Eintrag bleibt stehen und erhaelt ein valid_to, das Fenster des neuen schliesst daran an. Je Schluesselraum laeuft hoechstens ein Eintrag (valid_to null). Ohne diese Historie waere eine Rotation spaeter nicht nachvollziehbar; ein Pruefer waehlt den Schluessel ueber die key_id im Siegel und bezieht ihn aus DIESER Datei, nicht aus dem Paket. Das Archiv-Manifest traegt ein EIGENES Schluesselpaar mit eigener Historie (archiv_manifest_key_history.json, key_id-Raum 'am-'), damit ein Vorfall nie beides entwertet. ART DES SCHLUESSELS: jeder Eintrag traegt das maschinenlesbare Feld 'art'. Zulaessig sind 'demo' (eine Signatur damit beweist keine Urheberschaft durch einen getrennt verwahrten Schluessel: der geheime Teil ist offengelegt oder seine Verwahrung ist noch nicht gesichert; sie belegt nur Unveraendertheit und, mit Zeitstempel, den Zeitpunkt), 'ephemer' (einmalig verwendet, geheimer Teil nie gespeichert, valid_to = valid_from) und 'produktiv' (geheimer Teil unter Verwahrung, nicht im Repository). Ein Werkzeug waehlt den Schluessel ueber die key_id, nie ueber die Reihenfolge der Liste (am 03.08.2026 hat eine Auswahl nach dem LETZTEN Eintrag gegen den falschen Schluessel geprueft); 'art' sagt ihm, was es in der Hand haelt, und gehoert in jedes Urteil, das ueber ein damit gesiegeltes Objekt faellt.",
+  "keys": [
+    {
+      "key_id": "ba-e21c94432277974d",
+      "zweck": "belegakte",
+      "art": "demo",
+      "sig_algo": "ed25519",
+      "public_key": "2bdd1fb916f8bb2c458a459761075e9215805633e96a6d7e6e8adb7bb793cc7e",
+      "valid_from": "2026-07-30T12:45:05Z",
+      "valid_to": "2026-08-03T10:20:37Z",
+      "note": "DEMO-SCHLUESSEL, NICHT PRODUKTIV, STILLGELEGT. Der geheime Teil ist absichtlich offengelegt, damit Dritte die Faelschungs-Experimente der Referenz-Belegakte selbst nachstellen koennen; eine Signatur mit diesem Schluessel beweist gegenueber niemandem Urheberschaft. Der Eintrag existiert, damit ein Pruefer der Referenzakte den oeffentlichen Schluessel aus einer von der Akte UNABHAENGIGEN Quelle beziehen kann. Abgeloest am 2026-08-03T10:20:37Z durch ba-621f430af3eb39e1; valid_to ist auf diesen Zeitpunkt gesetzt, die Fenster schliessen aneinander an. Die Referenzakte traegt sealed_at 2026-07-30T22:43:12Z und liegt im Fenster. Weil der geheime Teil offen ist, kann jeder damit weiter signieren - genau dafuer ist das Fenster da: ein Siegel mit diesem Schluessel und einem sealed_at nach valid_to faellt im Verifier mit --key-history an Schritt 3c."
+    },
+    {
+      "key_id": "ba-621f430af3eb39e1",
+      "zweck": "belegakte",
+      "art": "produktiv",
+      "sig_algo": "ed25519",
+      "public_key": "70f22d029c104c74913f5c789f7d9b263f086c1d28e71afd98c1c6e459d720c2",
+      "valid_from": "2026-08-03T10:20:37Z",
+      "valid_to": null,
+      "note": "Interimsschluessel. Erster produktiver Siegel-Schluessel: seit 2026-08-03T10:20:37Z siegelt der laufende Dienst ausschliesslich damit, das erste damit ausgestellte Siegel traegt sealed_at 2026-08-03T10:58:48Z. Der geheime Teil liegt auf dem Rechner, der siegelt, nicht im Repository; getrennte Verwahrung offen bis 31.12.2026 (#287). Wer diesen Rechner beherrscht, kann rueckwirkend siegeln, soweit der externe Zeitstempel das nicht verhindert. Das ist besser als ein Demo-Schluessel mit offengelegtem geheimem Teil und schlechter als eine getrennte Verwahrung."
+    }
+  ]
+}

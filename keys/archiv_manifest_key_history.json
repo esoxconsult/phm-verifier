@@ -1,0 +1,35 @@
+{
+  "comment": "Oeffentliche Schluesselhistorie des ARCHIV-MANIFEST-Schluessels (Zweck 'archiv-manifest', key_id-Raum 'am-'). Damit werden die Wochen-Manifeste ueber der Archiv-Wurzel und die Koepfe des oeffentlichen Verzeichnisses signiert. Getrenntes Schluesselpaar von den Belegakten-Siegeln (seal_key_history.json, 'ba-'), damit ein Vorfall nie beides entwertet. Nur OEFFENTLICHE Ed25519-Schluessel; der geheime Teil steht nie hier. Jeder Eintrag: key_id ('am-' plus die ersten 16 Hex-Zeichen von SHA-256 ueber die Bytes des oeffentlichen Schluessels), zweck, art, sig_algo, public_key (Hex, 32 Byte), valid_from/valid_to (UTC, Format YYYY-MM-DDThh:mm:ssZ; valid_to null = laeuft noch), note. Rotation: ein neues Paar bekommt eine neue key_id und einen neuen Eintrag; der abgeloeste Eintrag bleibt stehen und erhaelt ein valid_to, das Fenster des neuen schliesst daran an. Je Schluesselraum laeuft hoechstens ein Eintrag (valid_to null). ART DES SCHLUESSELS: jeder Eintrag traegt das maschinenlesbare Feld 'art'. Zulaessig sind 'demo' (eine Signatur damit beweist keine Urheberschaft durch einen getrennt verwahrten Schluessel: der geheime Teil ist offengelegt oder seine Verwahrung ist noch nicht gesichert; sie belegt nur Unveraendertheit und, mit Zeitstempel, den Zeitpunkt), 'ephemer' (einmalig verwendet, geheimer Teil nie gespeichert, valid_to = valid_from) und 'produktiv' (geheimer Teil unter Verwahrung, nicht im Repository). Ein Werkzeug waehlt den Schluessel ueber die key_id, nie ueber die Reihenfolge der Liste (am 03.08.2026 hat eine Auswahl nach dem LETZTEN Eintrag gegen den falschen Schluessel geprueft); 'art' sagt ihm, was es in der Hand haelt, und gehoert in jedes Urteil, das ueber ein damit gesiegeltes Objekt faellt.",
+  "keys": [
+    {
+      "key_id": "am-4d7f1c3d46c7c12b",
+      "zweck": "archiv-manifest",
+      "art": "demo",
+      "sig_algo": "ed25519",
+      "public_key": "776494b93eaf5988fb810383dac406473a59280a9b96c56566e4f3ab0e3d785c",
+      "valid_from": "2026-07-30T22:43:16Z",
+      "valid_to": "2026-08-03T10:20:37Z",
+      "note": "DEMO-SCHLUESSEL, NICHT PRODUKTIV, STILLGELEGT. Signiert das Wochen-Manifest des Referenz-Beweisarchivs (Woche 2026-W31, Wurzel 2837817544dc54642caa960a147c55b9cb9531e72bb0271b5fea5c824ec31845, Baumgroesse 21). Der geheime Teil ist absichtlich offengelegt, damit Dritte die Faelschungs-Experimente selbst nachstellen koennen; eine Signatur mit diesem Schluessel beweist gegenueber niemandem Urheberschaft. Der Eintrag existiert, damit ein Pruefer des Zugehoerigkeitsnachweises (Schritt A3) den oeffentlichen Schluessel aus einer vom Nachweis UNABHAENGIGEN Quelle beziehen kann. Abgeloest am 2026-08-03T10:20:37Z durch am-7aa95b5eea386de8; valid_to ist auf diesen Zeitpunkt gesetzt. Das Referenz-Manifest (created_at 2026-07-30T22:43:16Z) liegt im Fenster; ein Manifest mit diesem Schluessel und einem created_at nach valid_to faellt im Verifier mit --key-history an Schritt A3."
+    },
+    {
+      "key_id": "am-c7e8bb1f83a8c0e9",
+      "zweck": "archiv-manifest",
+      "art": "ephemer",
+      "sig_algo": "ed25519",
+      "public_key": "0d080bdabc635a74b8a550da6dac3f51a551137b0ebdc5b8488b0d4828b8e009",
+      "valid_from": "2026-07-31T13:32:15Z",
+      "valid_to": "2026-07-31T13:32:15Z",
+      "note": "EPHEMER, nicht fortsetzbar. Signiert Manifest 1 der lokalen Erstbefuellung vom 31.07.2026 (Woche 2026-W31, Wurzel 412e7a7ea18c0f060e3a86781175eaebdb28221eae1ab9b898c45cbf6f6d875b, Baumgroesse 11, elf ESEF-Berichtspakete). Erzeugt im Arbeitsspeicher; der geheime Teil wurde nie gespeichert und existiert nicht mehr, valid_to = valid_from. Die Signatur dieses Manifests bleibt mit dem oeffentlichen Schluessel pruefbar, weiter signiert wird damit nie. Dieser Strang ist abgeschlossen und KEIN Vorgaenger des produktiven Bestandes: dessen Manifest 1 (Woche 2026-W32, Wurzel 2d401684d7d77167481efc2f41bc739765e357183d3e48d6e48cd67b7c696089, Baumgroesse 11, signiert mit am-7aa95b5eea386de8) beginnt eine eigene Kette. Gleiche Baumgroesse, verschiedene Wurzeln - verschiedene Bestaende."
+    },
+    {
+      "key_id": "am-7aa95b5eea386de8",
+      "zweck": "archiv-manifest",
+      "art": "produktiv",
+      "sig_algo": "ed25519",
+      "public_key": "345f0876de085c0bc204fbfc9925ae0ab8207f32df932ef317c7b656bf29360c",
+      "valid_from": "2026-08-03T10:20:37Z",
+      "valid_to": null,
+      "note": "Interimsschluessel. Erster produktiver Archiv-Manifest-Schluessel: seit 2026-08-03T10:20:37Z wird ausschliesslich damit signiert. Damit signiert ist Manifest 1 des produktiven Bestandes (Woche 2026-W32, Wurzel 2d401684d7d77167481efc2f41bc739765e357183d3e48d6e48cd67b7c696089, Baumgroesse 11), extern bezeugt von freetsa mit gen_time 2026-08-03T10:56:12Z ueber genau diesen Wurzelhash. Der geheime Teil liegt auf dem Rechner, der signiert, nicht im Repository; getrennte Verwahrung offen bis 31.12.2026 (#287). Der Zeitnachweis haengt am RFC-3161-Anker und ist davon unabhaengig."
+    }
+  ]
+}
