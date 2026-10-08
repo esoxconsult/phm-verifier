@@ -8,8 +8,18 @@
       "sig_algo": "ed25519",
       "public_key": "bf6a3873e5486b0514ae677a4080c336f31b8d63718217b10f14a61edace1a37",
       "valid_from": "2026-07-31T20:03:54Z",
+      "valid_to": "2026-11-10T00:00:00Z",
+      "note": "Werk-Schluessel, erzeugt am 31.07.2026 fuer die Verankerung des Kriterienwerks (ab Fassung v0.3). art demo, weil die getrennte Verwahrung offen ist (Frist 31.12.2026, #287), nicht weil der geheime Teil veroeffentlicht waere: er liegt nicht im Repository, sondern auf einem einzelnen Rechner, eine Zweitkopie gibt es noch nicht. Eine Signatur damit beweist deshalb keine Urheberschaft durch einen getrennt verwahrten Schluessel. Geht der geheime Teil verloren, bleiben die bestehenden Siegel pruefbar; neue Fassungen koennen mit dieser key_id dann nicht mehr gesiegelt werden. Nachtrag 08.10.2026: der geheime Teil ist verloren (auf keinem Rechner und keinem Server auffindbar), nicht kompromittiert. Nach dem 08.10.2026 entsteht mit dieser key_id kein Siegel mehr. valid_to ist der Stichtag des Nachfolgers wk-e63d88bb484d4863 (Rotation mit 30 Tagen Vorankuendigung, nahtloses Fenster). Die bestehenden Siegel (Kriterienwerk v0.3 und v0.4) bleiben mit diesem oeffentlichen Schluessel pruefbar."
+    },
+    {
+      "key_id": "wk-e63d88bb484d4863",
+      "zweck": "werk",
+      "art": "produktiv",
+      "sig_algo": "ed25519",
+      "public_key": "9ac583ce1b8286fd2c834c910ed0525871d3a722259c2b52d9557586a17e40a3",
+      "valid_from": "2026-11-10T00:00:00Z",
       "valid_to": null,
-      "note": "Werk-Schluessel, erzeugt am 31.07.2026 fuer die Verankerung des Kriterienwerks (ab Fassung v0.3). art demo, weil die getrennte Verwahrung offen ist (Frist 31.12.2026, #287), nicht weil der geheime Teil veroeffentlicht waere: er liegt nicht im Repository, sondern auf einem einzelnen Rechner, eine Zweitkopie gibt es noch nicht. Eine Signatur damit beweist deshalb keine Urheberschaft durch einen getrennt verwahrten Schluessel. Geht der geheime Teil verloren, bleiben die bestehenden Siegel pruefbar; neue Fassungen koennen mit dieser key_id dann nicht mehr gesiegelt werden."
+      "note": "Werk-Schluessel, erzeugt und angekuendigt am 08.10.2026 als Nachfolger von wk-cf838e4c808c6aa0, dessen geheimer Teil verloren ist. art produktiv: der geheime Teil liegt nur beim Schluesselhalter, nicht im Repository, und verschluesselt als Zweitkopie an zwei getrennten Orten, die Passphrase getrennt davon (#287, Entscheidung E3). Gilt ab 10.11.2026."
     }
   ]
 }

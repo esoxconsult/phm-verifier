@@ -60,7 +60,8 @@ Liegt einem Paket eine eigene Kopie des Pruefwerkzeugs bei (etwa
 |  |  | `am-7aa95b5eea386de8` | produktiv | 2026-08-03T10:20:37Z | laeuft |
 | `keys/seal_key_history.json` | `e3cc086a0cf6628dbcbc6dd086f42debc9cba25fbfca7f8a6a90d9b30d6dcb12` | `ba-e21c94432277974d` | demo | 2026-07-30T12:45:05Z | 2026-08-03T10:20:37Z |
 |  |  | `ba-621f430af3eb39e1` | produktiv | 2026-08-03T10:20:37Z | laeuft |
-| `keys/werk_key_history.json` | `dec9e0d63c27c571939a21193a4a941af2530ff71507cf075fb3e09219f249d1` | `wk-cf838e4c808c6aa0` | demo | 2026-07-31T20:03:54Z | laeuft |
+| `keys/werk_key_history.json` | `a2d191620bda6b02c37988f3b48333e949f7291d4381b05c5bcd76b9b2ade7d6` | `wk-cf838e4c808c6aa0` | demo | 2026-07-31T20:03:54Z | 2026-11-10T00:00:00Z |
+|  |  | `wk-e63d88bb484d4863` | produktiv | 2026-11-10T00:00:00Z | laeuft |
 
 Das Feld `art` sagt, was ein Schluessel beweist: `produktiv` (geheimer Teil
 unter Verwahrung, nicht im Repository), `ephemer` (einmal verwendet, geheimer
